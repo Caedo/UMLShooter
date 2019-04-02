@@ -21,4 +21,8 @@ public class PlayerMovement : MonoBehaviour {
 
         transform.LookAt(pos, Vector3.up);
     }
+
+    public void ResetVelocity() {
+        _body.velocity = Vector3.zero;
+    }
 }

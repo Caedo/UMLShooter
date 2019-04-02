@@ -15,4 +15,10 @@ public class PlayerMovement : MonoBehaviour {
     public void Move(Vector3 velocity) {
         _body.MovePosition(_body.position + velocity * Time.deltaTime * _Speed);
     }
+
+    public void LookTowards(Vector3 pos) {
+        pos.y = transform.position.y;
+
+        transform.LookAt(pos, Vector3.up);
+    }
 }

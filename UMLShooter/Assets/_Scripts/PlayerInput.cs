@@ -23,6 +23,12 @@ public class PlayerInput : MonoBehaviour {
 
         var velocity = forward.normalized * v + right.normalized * h;
         _movement.Move(velocity);
+
+        var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(mouseRay, out hit)) {
+            _movement.LookTowards(hit.point);
+        }
     }
 
 }

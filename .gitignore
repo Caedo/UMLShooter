@@ -35,3 +35,5 @@ sysinfo.txt
 *.apk
 *.unitypackage
 UMLShooter/.vscode/
+models/ShooterTest1/ShooterBrain/
+summaries/

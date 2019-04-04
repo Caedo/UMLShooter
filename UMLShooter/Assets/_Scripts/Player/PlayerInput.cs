@@ -6,10 +6,12 @@ public class PlayerInput : MonoBehaviour {
     Transform _cameraTransform;
 
     PlayerMovement _movement;
+    PlayerShooting _shooting;
 
     private void Awake() {
         _cameraTransform = Camera.main.transform;
         _movement = GetComponent<PlayerMovement>();
+        _shooting = GetComponent<PlayerShooting>();
     }
 
     private void Update() {
@@ -28,6 +30,10 @@ public class PlayerInput : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(mouseRay, out hit)) {
             _movement.LookTowards(hit.point);
+        }
+
+        if (Input.GetMouseButton(0)) {
+            _shooting.Fire();
         }
     }
 

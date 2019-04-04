@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
+    public LayerMask _enemyMask;
     public float _startSpeed;
     public float _damage;
 
@@ -11,5 +12,9 @@ public class Bullet : MonoBehaviour {
 
     void Awake() {
         _body = GetComponent<Rigidbody>();
+    }
+
+    protected void Start() {
+        _body.velocity = transform.forward * _startSpeed;
     }
 }

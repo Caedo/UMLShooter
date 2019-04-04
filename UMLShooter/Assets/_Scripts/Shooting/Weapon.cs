@@ -10,6 +10,15 @@ public abstract class Weapon : MonoBehaviour
 
     public bool _infinityAmmo;
     public bool _avaible;
+
+    public Transform _gunPoint;
     
     public abstract void Fire();
+
+    public void Equip(Transform grip){
+        transform.parent = grip;
+
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+    }
 }

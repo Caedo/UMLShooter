@@ -135,6 +135,36 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!1 &2727736882462903289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6405345929974138566}
+  m_Layer: 0
+  m_Name: point\
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6405345929974138566
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2727736882462903289}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.069}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2766255764174778578}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2766255764174778577
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,7 +175,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2766255764174778578}
   - component: {fileID: 2766255764174778579}
-  - component: {fileID: 2766255764174778576}
+  - component: {fileID: 5130386007813300897}
+  - component: {fileID: 2587616888604117485}
   m_Layer: 0
   m_Name: Bullet machinegun
   m_TagString: Untagged
@@ -166,6 +197,7 @@ Transform:
   m_Children:
   - {fileID: 2766255765455622616}
   - {fileID: 8646813541173635507}
+  - {fileID: 6405345929974138566}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -185,7 +217,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2766255764174778576
+--- !u!114 &5130386007813300897
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,14 +226,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 2766255764174778577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2125df7267cc5b458a11543dca3b693, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1096443fcaae74ca1d4a56d220b02d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyMask:
     serializedVersion: 2
-    m_Bits: 0
-  _startSpeed: 10
-  _damage: 0
+    m_Bits: 512
+  _startSpeed: 15
+  _damage: 10
+  _hitPoint: {fileID: 6405345929974138566}
+--- !u!114 &2587616888604117485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2766255764174778577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Events:
+  - {fileID: 11400000, guid: d70036c46fc579a468ea59011f06ce9c, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5130386007813300897}
+        m_MethodName: OnReset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1001 &2766255765455752024
 PrefabInstance:
   m_ObjectHideFlags: 0

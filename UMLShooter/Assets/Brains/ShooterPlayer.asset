@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: ShooterPlayer
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 9
+    vectorObservationSize: 27
     numStackedVectorObservations: 1
-    vectorActionSize: 02000000
+    vectorActionSize: 05000000
     cameraResolutions: []
     vectorActionDescriptions:
+    - 
+    - 
+    - 
     - 
     - 
     vectorActionSpaceType: 1
@@ -33,6 +36,9 @@ MonoBehaviour:
     value: -1
   - key: 100
     index: 0
+    value: 1
+  - key: 323
+    index: 4
     value: 1
   axisContinuousPlayerActions: []
   discretePlayerActions: []

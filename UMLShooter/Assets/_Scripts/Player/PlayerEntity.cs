@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerEntity : Entity
-{
+public class PlayerEntity : Entity {
     public System.Action OnPlayerDeath;
+    public System.Action OnPlayerDamage;
 
-    protected override void Death()
-    {
+    public override void TakeDamage(float dmg) {
+        OnPlayerDamage?.Invoke();
+        base.TakeDamage(dmg);
+    }
+
+    protected override void Death() {
         OnPlayerDeath?.Invoke();
-        Destroy(gameObject);
+        Debug.Log("Death");
+        //Destroy(gameObject);
+        //gameObject.SetActive(false);
     }
 }

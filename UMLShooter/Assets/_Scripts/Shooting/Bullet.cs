@@ -17,4 +17,8 @@ public class Bullet : MonoBehaviour {
     protected void Start() {
         _body.velocity = transform.forward * _startSpeed;
     }
+
+    public void OnReset() {
+        Destroy(gameObject);
+    }
 }

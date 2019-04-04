@@ -235,13 +235,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561027fefe882be48ae342b508c02e22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 1
+  _damage: 26
   _maxAmmo: 0
   _currentAmmo: 0
   _infinityAmmo: 1
   _avaible: 1
   _gunPoint: {fileID: 8000002179529036546}
-  _bulletPrefab: {fileID: 2766255764174778576, guid: 2d28800231af5654da047eef34d6eef1,
+  _bulletPrefab: {fileID: 5130386007813300897, guid: 2d28800231af5654da047eef34d6eef1,
     type: 3}
   _roundsPerSecond: 6
   _dispresionAngle: 0

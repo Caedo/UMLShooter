@@ -232,7 +232,7 @@ MonoBehaviour:
   _enemyMask:
     serializedVersion: 2
     m_Bits: 512
-  _startSpeed: 15
+  _startSpeed: 25
   _damage: 10
   _hitPoint: {fileID: 6405345929974138566}
 --- !u!114 &2587616888604117485
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Events:
-  - {fileID: 11400000, guid: d70036c46fc579a468ea59011f06ce9c, type: 2}
+  - {fileID: 11400000, guid: aca00d6b18b56024389e437af741af51, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:

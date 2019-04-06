@@ -6,6 +6,16 @@ using UnityEngine;
 
 public class ShooterAgent : Agent {
 
+    [Header("Ray Perception")]
+    [Range(0f, 360f)]
+    public float _rayAngleRange;
+    public float _rayAngleRangeOffset;
+    public float _rayAngleRangeStep;
+    public float _rayDistance;
+
+    [Header("Events")]
+    public GameEvent _agentReset;
+
     Vector3 _startPos;
 
     Rigidbody _body;
@@ -18,6 +28,7 @@ public class ShooterAgent : Agent {
     bool dead;
 
     string[] _detectableObjects = new string[] { "Enemy" };
+    float[] _rayAngles;
 
     void Awake() {
         _startPos = transform.position;
@@ -27,24 +38,37 @@ public class ShooterAgent : Agent {
         _shooting = GetComponent<PlayerShooting>();
         _rayPerception = GetComponent<RayPerception>();
 
-        _entity.OnPlayerDamage += PlayerDamage;
-        _entity.OnPlayerDeath += PlayerDeath;
+        // _entity.OnPlayerDamage += PlayerDamage;
+        // _entity.OnPlayerDeath += PlayerDeath;
+
+        CreateRayAngles();
+    }
+
+    void CreateRayAngles() {
+        var startAngle = _rayAngleRangeOffset;
+        int stepCount = Mathf.CeilToInt(_rayAngleRange / _rayAngleRangeStep);
+        _rayAngles = new float[stepCount];
+
+        for (int i = 0; i < stepCount; i++) {
+            _rayAngles[i] = startAngle + i * _rayAngleRangeStep;
+        }
     }
 
     public override void AgentReset() {
         transform.position = _startPos;
         _movement.ResetVelocity();
         _entity.ResetHealth();
+
+        _agentReset.Raise();
     }
 
     public override void CollectObservations() {
+        float[] rayAngles = { 20f, 90f, 160f, 45f, 135f, 70f, 110f };
 
-        float rayDistance = 20f;
-        float[] rayAngles = { 0f, 45f, 90f, 135f, 180f, 110f, 70f };
-
-        AddVectorObs(transform.position);
+        //AddVectorObs(transform.position);
+        AddVectorObs(transform.rotation.y);
         AddVectorObs(_body.velocity);
-        AddVectorObs(_rayPerception.Perceive(rayDistance, rayAngles, _detectableObjects, 0.5f, .1f));
+        AddVectorObs(_rayPerception.Perceive(_rayDistance, rayAngles, _detectableObjects, 1f, 0));
     }
 
     public override void AgentAction(float[] vectorAction, string textAction) {
@@ -60,7 +84,7 @@ public class ShooterAgent : Agent {
 
         // Rotate Agent
         var lookPostion = new Vector3(vectorAction[2], 0, vectorAction[3]);
-        _movement.LookTowards(lookPostion);
+        _movement.LookTowards(transform.position + lookPostion);
 
         // Fire 
         var shootDecision = (int) vectorAction[4];
@@ -68,15 +92,24 @@ public class ShooterAgent : Agent {
             _shooting.Fire();
         }
 
-        if (transform.position.y < -2f) {
-            SetReward(-2f);
+        if (transform.position.y < _startPos.y - 1f) {
+            SetReward(-1f);
             Done();
         }
+
+        AddReward(-1f / agentParameters.maxStep);
     }
 
+    // private void OnCollisionEnter(Collision other) {
+    //     var dummy = other.collider.GetComponentInParent<ShootDummy>();
+    //     if(dummy){
+    //         dummy.TakeDamage(200f);
+    //     }
+    // }
+
     void PlayerDeath() {
-        Debug.Log("Done by death");
-        SetReward(-100f);
+        // Debug.Log("Done by death");
+        // SetReward(-100f);
         Done();
     }
 
@@ -91,5 +124,4 @@ public class ShooterAgent : Agent {
     public void OnEnemyDamage() {
         SetReward(1f);
     }
-
 }

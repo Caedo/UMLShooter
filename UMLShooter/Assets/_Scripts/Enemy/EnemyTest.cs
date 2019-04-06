@@ -27,7 +27,6 @@ public class EnemyTest : MonoBehaviour {
     }
 
     public void OnReset() {
-        Debug.Log("dupa");
         Destroy(gameObject);
     }
 }

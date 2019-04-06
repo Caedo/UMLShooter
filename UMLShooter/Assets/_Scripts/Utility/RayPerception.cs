@@ -47,6 +47,8 @@ namespace MLAgents
                         {
                             subList[i] = 1;
                             subList[detectableObjects.Length + 1] = hit.distance / rayDistance;
+                            //Debug.Log(hit.collider.gameObject.tag);
+
                             break;
                         }
                     }

@@ -1,23 +1,23 @@
 default:
     trainer: ppo
-    batch_size: 10
-    beta: 5.0e-3
-    buffer_size: 100
+    batch_size: 128
+    beta: 1.0e-2
+    buffer_size: 2048
     epsilon: 0.2
     gamma: 0.99
-    hidden_units: 128
+    hidden_units: 512
     lambd: 0.95
     learning_rate: 3.0e-4
-    max_steps: 5.0e4
+    max_steps: 5.0e5
     memory_size: 256
     normalize: false
     num_epoch: 3
     num_layers: 2
-    time_horizon: 64
+    time_horizon: 127
     sequence_length: 64
-    summary_freq: 1000
+    summary_freq: 2000
     use_recurrent: false
-    use_curiosity: false
+    use_curiosity: true
     curiosity_strength: 0.01
-    curiosity_enc_size: 128
+    curiosity_enc_size: 256
 

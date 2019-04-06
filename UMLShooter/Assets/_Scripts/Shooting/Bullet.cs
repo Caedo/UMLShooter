@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour {
         _body = GetComponent<Rigidbody>();
     }
 
-    protected void Start() {
+    protected virtual void Start() {
         _body.velocity = transform.forward * _startSpeed;
     }
 

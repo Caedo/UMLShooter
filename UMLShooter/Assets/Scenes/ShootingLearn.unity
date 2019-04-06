@@ -456,59 +456,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3921287613027405521, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: _weaponsPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 9143652712154947480, guid: 97b562796b0ce1d45894948db8ac64da,
-        type: 3}
-    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: _agentReset
-      value: 
-      objectReference: {fileID: 11400000, guid: aca00d6b18b56024389e437af741af51,
-        type: 2}
-    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: agentParameters.maxStep
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: brain
-      value: 
-      objectReference: {fileID: 11400000, guid: 466ef22d19279bb479002d9633d45d35,
-        type: 2}
-    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: _rayDistance
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8560976479107881814, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.288
-      objectReference: {fileID: 0}
-    - target: {fileID: 8560976479107881814, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8560976479107881814, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 214d800e387559743b35d884fefbb63f, type: 3}
 --- !u!4 &82397541 stripped
@@ -949,8 +896,7 @@ MonoBehaviour:
     broadcastingBrains:
     - {fileID: 11400000, guid: 466ef22d19279bb479002d9633d45d35, type: 2}
     - {fileID: 11400000, guid: 06e41bca1985fc94ca39011e6db0eaf4, type: 2}
-    _brainsToControl:
-    - {fileID: 11400000, guid: 466ef22d19279bb479002d9633d45d35, type: 2}
+    _brainsToControl: []
   maxSteps: 0
   trainingConfiguration:
     width: 80
@@ -1433,7 +1379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &534448401
 Transform:
   m_ObjectHideFlags: 0
@@ -2410,7 +2356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &912296993
 Transform:
   m_ObjectHideFlags: 0
@@ -2755,7 +2701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1031116535
 Transform:
   m_ObjectHideFlags: 0
@@ -4043,7 +3989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1576794365
 Transform:
   m_ObjectHideFlags: 0

@@ -23,9 +23,7 @@ namespace MLAgents
         /// <param name="detectableObjects">List of tags which correspond to object types agent can see</param>
         /// <param name="startOffset">Starting heigh offset of ray from center of agent.</param>
         /// <param name="endOffset">Ending height offset of ray from center of agent.</param>
-        public List<float> Perceive(float rayDistance,
-            float[] rayAngles, string[] detectableObjects,
-            float startOffset, float endOffset)
+        public List<float> Perceive(float rayDistance, float[] rayAngles, string[] detectableObjects, float startOffset, float endOffset)
         {
             perceptionBuffer.Clear();
             // For each ray sublist stores categorial information on detected object
@@ -37,14 +35,11 @@ namespace MLAgents
                 endPosition.y = endOffset;
                 if (Application.isEditor)
                 {
-                    Debug.DrawRay(transform.position + new Vector3(0f, startOffset, 0f),
-                        endPosition, Color.black, 0.01f, true);
+                    Debug.DrawRay(transform.position + new Vector3(0f, startOffset, 0f), endPosition, Color.black, 0.01f, true);
                 }
 
                 float[] subList = new float[detectableObjects.Length + 2];
-                if (Physics.SphereCast(transform.position +
-                                       new Vector3(0f, startOffset, 0f), 0.5f,
-                    endPosition, out hit, rayDistance))
+                if (Physics.SphereCast(transform.position + new Vector3(0f, startOffset, 0f), 0.5f, endPosition, out hit, rayDistance))
                 {
                     for (int i = 0; i < detectableObjects.Length; i++)
                     {

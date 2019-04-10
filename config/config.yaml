@@ -1,19 +1,19 @@
 default:
     trainer: ppo
-    batch_size: 128
+    batch_size: 1024
     beta: 1.0e-2
-    buffer_size: 2048
+    buffer_size: 10240
     epsilon: 0.2
     gamma: 0.99
-    hidden_units: 512
+    hidden_units: 256
     lambd: 0.95
-    learning_rate: 3.0e-4
+    learning_rate: 6.0e-4
     max_steps: 5.0e5
     memory_size: 256
     normalize: false
     num_epoch: 3
     num_layers: 2
-    time_horizon: 127
+    time_horizon: 128
     sequence_length: 64
     summary_freq: 2000
     use_recurrent: false

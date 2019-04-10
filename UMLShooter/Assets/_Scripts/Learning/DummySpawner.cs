@@ -42,7 +42,7 @@ public class DummySpawner : MonoBehaviour {
             index = Random.Range(0, _spawnPoints.Length);
         } while (_dummies[index] != null);
 
-        var pos = new Vector3(Random.Range(-_spawnArea.x, _spawnArea.x), 0, Random.Range(-_spawnArea.y, _spawnArea.y)) + transform.position;
+        var pos = RandomNewPosition();
         _spawnPoints[index].position = pos;
         var dummy = Instantiate(_dummyPrefab, pos, Quaternion.identity, transform);
         dummy._index = index;
@@ -54,9 +54,9 @@ public class DummySpawner : MonoBehaviour {
     }
 
     void DummyKilled(ShootDummy dummy) {
-        if(dummy._spawner != this)
+        if (dummy._spawner != this)
             return;
-            
+
         _dummies[dummy._index] = null;
         _agent.AddReward(1f);
 
@@ -76,6 +76,10 @@ public class DummySpawner : MonoBehaviour {
         }
 
         SpawnOneDummy();
+    }
+
+    public Vector3 RandomNewPosition() {
+        return new Vector3(Random.Range(-_spawnArea.x, _spawnArea.x), 0, Random.Range(-_spawnArea.y, _spawnArea.y)) + transform.position;
     }
 
     private void OnDrawGizmosSelected() {

@@ -456,6 +456,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 466ef22d19279bb479002d9633d45d35,
+        type: 2}
+    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: agentParameters.numberOfActionsBetweenDecisions
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: _originPoint
+      value: 
+      objectReference: {fileID: 1003157817}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 214d800e387559743b35d884fefbb63f, type: 3}
 --- !u!4 &82397541 stripped
@@ -816,16 +832,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
         type: 3}
       propertyPath: _agentReset
@@ -843,6 +849,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 466ef22d19279bb479002d9633d45d35,
         type: 2}
+    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: _useMonitor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: agentParameters.numberOfActionsBetweenDecisions
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: _originPoint
+      value: 
+      objectReference: {fileID: 534448401}
+    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 214d800e387559743b35d884fefbb63f, type: 3}
 --- !u!114 &203002166 stripped
@@ -1715,16 +1746,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
         type: 3}
       propertyPath: _agentReset
@@ -1742,6 +1763,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 466ef22d19279bb479002d9633d45d35,
         type: 2}
+    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: _useMonitor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: agentParameters.numberOfActionsBetweenDecisions
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: _originPoint
+      value: 
+      objectReference: {fileID: 1031116535}
+    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 214d800e387559743b35d884fefbb63f, type: 3}
 --- !u!114 &723025632 stripped
@@ -3219,16 +3265,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
         type: 3}
       propertyPath: _agentReset
@@ -3246,6 +3282,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 466ef22d19279bb479002d9633d45d35,
         type: 2}
+    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: _useMonitor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: agentParameters.numberOfActionsBetweenDecisions
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: _originPoint
+      value: 
+      objectReference: {fileID: 912296993}
+    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 214d800e387559743b35d884fefbb63f, type: 3}
 --- !u!114 &1269042560 stripped
@@ -5114,16 +5175,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
         type: 3}
       propertyPath: _agentReset
@@ -5141,6 +5192,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 466ef22d19279bb479002d9633d45d35,
         type: 2}
+    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: _useMonitor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: agentParameters.numberOfActionsBetweenDecisions
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: _originPoint
+      value: 
+      objectReference: {fileID: 1576794365}
+    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945645714868199037, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 163896046333326363, guid: 214d800e387559743b35d884fefbb63f,
         type: 3}
       propertyPath: Events.Array.data[0]

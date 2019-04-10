@@ -137,3 +137,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _MaxHealth: 1
   _index: 0
+  _spawner: {fileID: 0}
+  _speedRange: {x: 3, y: 7}

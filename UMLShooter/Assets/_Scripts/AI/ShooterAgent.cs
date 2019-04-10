@@ -10,11 +10,17 @@ public class ShooterAgent : Agent {
     [Range(0f, 360f)]
     public float _rayAngleRange;
     public float _rayAngleRangeOffset;
-    public float _rayAngleRangeStep;
+    public int _raysNumber;
     public float _rayDistance;
+
+    [Header("Positions")]
+    public Transform _originPoint;
 
     [Header("Events")]
     public GameEvent _agentReset;
+
+    [Header("Debug")]
+    public bool _useMonitor;
 
     Vector3 _startPos;
 
@@ -46,11 +52,11 @@ public class ShooterAgent : Agent {
 
     void CreateRayAngles() {
         var startAngle = _rayAngleRangeOffset;
-        int stepCount = Mathf.CeilToInt(_rayAngleRange / _rayAngleRangeStep);
-        _rayAngles = new float[stepCount];
+        var step = _rayAngleRange / (_raysNumber - 1);
 
-        for (int i = 0; i < stepCount; i++) {
-            _rayAngles[i] = startAngle + i * _rayAngleRangeStep;
+        _rayAngles = new float[_raysNumber];
+        for (int i = 0; i < _raysNumber; i++) {
+            _rayAngles[i] = startAngle + i * step;
         }
     }
 
@@ -66,9 +72,20 @@ public class ShooterAgent : Agent {
         float[] rayAngles = { 20f, 90f, 160f, 45f, 135f, 70f, 110f };
 
         //AddVectorObs(transform.position);
-        AddVectorObs(transform.rotation.y);
-        AddVectorObs(_body.velocity);
-        AddVectorObs(_rayPerception.Perceive(_rayDistance, rayAngles, _detectableObjects, 1f, 0));
+        var rot = transform.rotation.eulerAngles.y / 360f;
+        var pos = transform.position - _originPoint.position;
+        pos /= 14f;
+        
+        var perception = _rayPerception.Perceive(_rayDistance, _rayAngles, _detectableObjects, 1f, 0);
+        AddVectorObs(rot);
+        AddVectorObs(pos);
+        AddVectorObs(perception);
+
+        if (_useMonitor) {
+            Monitor.Log("Rotation: ", rot.ToString());
+            //Monitor.Log("Position: ", pos.ToString());
+            Monitor.Log("Perception: ", perception.ToArray());
+        }
     }
 
     public override void AgentAction(float[] vectorAction, string textAction) {
@@ -83,11 +100,20 @@ public class ShooterAgent : Agent {
         _movement.Move(moveVector);
 
         // Rotate Agent
-        var lookPostion = new Vector3(vectorAction[2], 0, vectorAction[3]);
-        _movement.LookTowards(transform.position + lookPostion);
+        // var lookPostion = new Vector3(vectorAction[2], 0, vectorAction[3]);
+        // _movement.LookTowards(transform.position + lookPostion);
+
+        // let's assume that 0 == 0 degrees and 1 == 360 degrees
+        var rotation = vectorAction[2];
+        var angle = (rotation * 360f + 90F) * Mathf.Deg2Rad;
+
+        var xLook = Mathf.Cos(angle);
+        var yLook = Mathf.Sin(angle);
+
+        _movement.LookTowards(transform.position + new Vector3(xLook, 0, yLook));
 
         // Fire 
-        var shootDecision = (int) vectorAction[4];
+        var shootDecision = (int) vectorAction[3];
         if (shootDecision == 1) {
             _shooting.Fire();
         }
@@ -100,12 +126,16 @@ public class ShooterAgent : Agent {
         AddReward(-1f / agentParameters.maxStep);
     }
 
-    // private void OnCollisionEnter(Collision other) {
-    //     var dummy = other.collider.GetComponentInParent<ShootDummy>();
-    //     if(dummy){
-    //         dummy.TakeDamage(200f);
-    //     }
-    // }
+    private void OnCollisionEnter(Collision other) {
+        // var dummy = other.collider.GetComponentInParent<ShootDummy>();
+        // if(dummy){
+        //     dummy.TakeDamage(200f);
+        // }
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            SetReward(-0.01f);
+        }
+    }
 
     void PlayerDeath() {
         // Debug.Log("Done by death");

@@ -39,7 +39,9 @@ namespace MLAgents
                 }
 
                 float[] subList = new float[detectableObjects.Length + 2];
-                if (Physics.SphereCast(transform.position + new Vector3(0f, startOffset, 0f), 0.5f, endPosition, out hit, rayDistance))
+                
+                //if(Physics.Raycast(transform.position + new Vector3(0,startOffset,0), endPosition, out hit, rayDistance))
+                if (Physics.SphereCast(transform.position + new Vector3(0f, startOffset, 0f), 0.1f, endPosition, out hit, rayDistance))
                 {
                     for (int i = 0; i < detectableObjects.Length; i++)
                     {

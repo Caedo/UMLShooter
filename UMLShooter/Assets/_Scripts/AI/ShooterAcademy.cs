@@ -19,4 +19,9 @@ public class ShooterAcademy : Academy {
     void OnPlayerDeath(){
         _gameEndedEvent.Raise();
     }
+
+    public override void InitializeAcademy()
+    {
+        Monitor.SetActive(true);
+    }
 }

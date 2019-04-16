@@ -16,11 +16,11 @@ public class ShooterAgent : Agent {
     [Header("Positions")]
     public Transform _originPoint;
 
-    [Header("Events")]
-    public GameEvent _agentReset;
 
     [Header("Debug")]
     public bool _useMonitor;
+
+    public event System.Action OnAgentReset;
 
     Vector3 _startPos;
 
@@ -65,7 +65,7 @@ public class ShooterAgent : Agent {
         _movement.ResetVelocity();
         _entity.ResetHealth();
 
-        _agentReset.Raise();
+        OnAgentReset?.Invoke();
     }
 
     public override void CollectObservations() {
@@ -91,9 +91,8 @@ public class ShooterAgent : Agent {
     public override void AgentAction(float[] vectorAction, string textAction) {
         // 0 -> x move axis
         // 1 -> y move axis
-        // 2 -> x look position
-        // 3 -> y look position
-        // 4 -> fire
+        // 2 -> rotation
+        // 3 -> fire
 
         // Move agent
         var moveVector = new Vector3(vectorAction[0], 0, vectorAction[1]);
@@ -126,11 +125,11 @@ public class ShooterAgent : Agent {
         AddReward(-1f / agentParameters.maxStep);
     }
 
+    public void KilledEnemy(){
+        AddReward(1f);
+    }
+
     private void OnCollisionEnter(Collision other) {
-        // var dummy = other.collider.GetComponentInParent<ShootDummy>();
-        // if(dummy){
-        //     dummy.TakeDamage(200f);
-        // }
         if(other.gameObject.CompareTag("Enemy"))
         {
             SetReward(-0.01f);
@@ -141,17 +140,5 @@ public class ShooterAgent : Agent {
         // Debug.Log("Done by death");
         // SetReward(-100f);
         Done();
-    }
-
-    void PlayerDamage() {
-        SetReward(-1f);
-    }
-
-    public void OnEnemyDeath() {
-        SetReward(5f);
-    }
-
-    public void OnEnemyDamage() {
-        SetReward(1f);
     }
 }

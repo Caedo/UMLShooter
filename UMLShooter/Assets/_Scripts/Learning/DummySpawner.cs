@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class DummySpawner : MonoBehaviour {
     public ShootDummy _dummyPrefab;
-    public Transform[] _spawnPoints;
     public ShooterAgent _agent;
     public Vector2 _spawnArea;
     public int _dummySpawnCount;
     public int _maxDummiesCount;
 
-    private ShootDummy[] _dummies;
+    // Need reference to spawned dummies
+    public List<ShootDummy> _spawnedDummies = new List<ShootDummy>();
 
     int _dummiesToSpawn;
 
     private void Awake() {
-        _dummies = new ShootDummy[_spawnPoints.Length];
         ShootDummy.OnDummyKill += DummyKilled;
+        _agent.OnAgentReset += ResetSpawner;
     }
 
     public void ResetSpawner() {
         _dummiesToSpawn = _maxDummiesCount;
-        for (int i = 0; i < _dummies.Length; i++) {
-            if (_dummies[i] != null) {
-                DestroyImmediate(_dummies[i].gameObject);
-                _dummies[i] = null;
-            }
+
+        for (int i = 0; i < _spawnedDummies.Count; i++) {
+            DestroyImmediate(_spawnedDummies[i].gameObject);
         }
+
+        _spawnedDummies.Clear();
 
         for (int i = 0; i < _dummySpawnCount; i++) {
             SpawnOneDummy();
@@ -37,18 +37,11 @@ public class DummySpawner : MonoBehaviour {
         if (_dummiesToSpawn <= 0)
             return;
 
-        int index;
-        do {
-            index = Random.Range(0, _spawnPoints.Length);
-        } while (_dummies[index] != null);
-
         var pos = RandomNewPosition();
-        _spawnPoints[index].position = pos;
         var dummy = Instantiate(_dummyPrefab, pos, Quaternion.identity, transform);
-        dummy._index = index;
         dummy._spawner = this;
 
-        _dummies[index] = dummy;
+        _spawnedDummies.Add(dummy);
 
         _dummiesToSpawn--;
     }
@@ -57,22 +50,12 @@ public class DummySpawner : MonoBehaviour {
         if (dummy._spawner != this)
             return;
 
-        _dummies[dummy._index] = null;
-        _agent.AddReward(1f);
+        _agent.KilledEnemy();
+        _spawnedDummies.Remove(dummy);
 
-        if (_dummiesToSpawn == 0) {
-            bool allKilled = true;
-            for (int i = 0; i < _dummies.Length; i++) {
-                if (_dummies[i] != null) {
-                    allKilled = false;
-                    break;
-                }
-            }
-
-            if (allKilled) {
-                Debug.Log("IT WORKED!!!");
-                _agent.Done();
-            }
+        if (_dummiesToSpawn == 0 && _spawnedDummies.Count <= 0) {
+            Debug.Log("IT WORKED!!!");
+            _agent.Done();
         }
 
         SpawnOneDummy();

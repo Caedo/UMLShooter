@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShooterBrain
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 49
+    vectorObservationSize: 79
     numStackedVectorObservations: 1
     vectorActionSize: 05000000
     cameraResolutions: []
@@ -24,5 +24,5 @@ MonoBehaviour:
     - 
     - 
     vectorActionSpaceType: 1
-  model: {fileID: 11400000, guid: 94b527e62ae1a944b9acedd68f0aaa4d, type: 3}
+  model: {fileID: 11400000, guid: 9e89bec9ccf401f4899f453ed7636d1d, type: 3}
   inferenceDevice: 0

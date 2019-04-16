@@ -8,7 +8,7 @@ default:
     hidden_units: 256
     lambd: 0.95
     learning_rate: 6.0e-4
-    max_steps: 5.0e5
+    max_steps: 3.0e5
     memory_size: 256
     normalize: false
     num_epoch: 3

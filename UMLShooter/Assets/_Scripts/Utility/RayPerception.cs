@@ -10,6 +10,9 @@ namespace MLAgents
     /// </summary>
     public class RayPerception : MonoBehaviour
     {
+        public bool drawDebugRay;
+        public bool drawDebugHit;
+
         List<float> perceptionBuffer = new List<float>();
         Vector3 endPosition;
         RaycastHit hit;
@@ -30,10 +33,9 @@ namespace MLAgents
             // along with object distance.
             foreach (float angle in rayAngles)
             {
-                endPosition = transform.TransformDirection(
-                    PolarToCartesian(rayDistance, angle));
+                endPosition = PolarToCartesian(rayDistance, angle);
                 endPosition.y = endOffset;
-                if (Application.isEditor)
+                if (Application.isEditor && drawDebugRay)
                 {
                     Debug.DrawRay(transform.position + new Vector3(0f, startOffset, 0f), endPosition, Color.black, 0.01f, true);
                 }
@@ -50,7 +52,10 @@ namespace MLAgents
                             subList[i] = 1;
                             subList[detectableObjects.Length + 1] = hit.distance / rayDistance;
                             //Debug.Log(hit.collider.gameObject.tag);
-
+                            if(drawDebugHit){
+                                Debug.DrawRay(hit.point, Vector3.up * 0.1f, Color.cyan, 0.01f);
+                                Debug.DrawRay(hit.point, Vector3.down * 0.1f, Color.cyan, 0.01f);
+                            }
                             break;
                         }
                     }

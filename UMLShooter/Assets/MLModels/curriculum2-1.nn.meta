@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 67c052a9b5c478442ad2538f3c667d7c
+ScriptedImporter:
+  fileIDToRecycleName:
+    11400000: Assets/MLModels/curriculum2-1.nn
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 83221ad3db87f4b3b91b041047cb2bc5, type: 3}

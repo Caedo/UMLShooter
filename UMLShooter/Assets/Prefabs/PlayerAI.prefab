@@ -1545,6 +1545,6 @@ MonoBehaviour:
   _rayAngleRange: 180
   _rayAngleRangeOffset: 0
   _raysNumber: 15
-  _rayDistance: 15
+  _rayDistance: 10
   _originPoint: {fileID: 0}
   _useMonitor: 1

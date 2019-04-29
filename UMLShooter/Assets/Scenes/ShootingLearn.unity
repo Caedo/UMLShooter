@@ -167,7 +167,11 @@ MonoBehaviour:
     timeScale: 1
     targetFrameRate: 60
   resetParameters:
-    resetParameters: []
+    resetParameters:
+    - key: speed_min
+      value: 0
+    - key: speed_max
+      value: 5
 --- !u!4 &223304496
 Transform:
   m_ObjectHideFlags: 0
@@ -1397,6 +1401,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Area (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1971095043652311860, guid: 458f475f94fe84146a96318b27d1d6bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1971095043652311861, guid: 458f475f94fe84146a96318b27d1d6bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1462,6 +1471,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _rayAngleRange
       value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661813572047913316, guid: 458f475f94fe84146a96318b27d1d6bc,
+        type: 3}
+      propertyPath: _rayDistance
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 458f475f94fe84146a96318b27d1d6bc, type: 3}

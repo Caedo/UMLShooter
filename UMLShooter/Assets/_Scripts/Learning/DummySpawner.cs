@@ -62,7 +62,26 @@ public class DummySpawner : MonoBehaviour {
     }
 
     public Vector3 RandomNewPosition() {
-        return new Vector3(Random.Range(-_spawnArea.x, _spawnArea.x), 0, Random.Range(-_spawnArea.y, _spawnArea.y)) + transform.position;
+        var horizontalSpawn = Random.value > 0.5f;
+
+        var result = Vector3.zero;
+
+        if (horizontalSpawn) {
+            var z = (Random.value >.5f ? 1 : -1) * _spawnArea.y;
+            var x = Random.Range(-_spawnArea.x, _spawnArea.x);
+
+            result.x = x;
+            result.z = z;
+        } else {
+
+            var x = (Random.value >.5f ? 1 : -1) * _spawnArea.x;
+            var z = Random.Range(-_spawnArea.y, _spawnArea.y);
+
+            result.x = x;
+            result.z = z;
+        }
+
+        return result + transform.position;
     }
 
     private void OnDrawGizmosSelected() {

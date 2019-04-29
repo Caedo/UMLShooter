@@ -12,7 +12,7 @@ public class ShootDummy : Entity {
     [HideInInspector]
     public DummySpawner _spawner;
 
-    public Vector2 _speedRange;
+    //public Vector2 _speedRange;
 
     Vector3 _destination;
     float _speed;
@@ -20,7 +20,7 @@ public class ShootDummy : Entity {
     protected override void Start() {
         base.Start();
 
-        _speed = Random.Range(_speedRange.x, _speedRange.y);
+        _speed = Random.Range(ShootingLearnAcademy.Instance.resetParameters["speed_min"], ShootingLearnAcademy.Instance.resetParameters["speed_max"]);
         _destination = _spawner.RandomNewPosition();
     }
 

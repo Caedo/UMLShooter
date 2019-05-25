@@ -1414,6 +1414,7 @@ GameObject:
   - component: {fileID: 3921287613027405521}
   - component: {fileID: 6181314792203528716}
   - component: {fileID: 4434993665446903501}
+  - component: {fileID: 7598068875222052126}
   m_Layer: 0
   m_Name: PlayerAI
   m_TagString: Player
@@ -1560,3 +1561,17 @@ MonoBehaviour:
   _rayDistance: 10
   _originPoint: {fileID: 0}
   _useMonitor: 1
+--- !u!114 &7598068875222052126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9141881217880144777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4917f755af73721469329b3baf11d6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawDebugRay: 0
+  drawDebugHit: 0

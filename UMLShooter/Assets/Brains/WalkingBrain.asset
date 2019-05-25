@@ -13,11 +13,16 @@ MonoBehaviour:
   m_Name: WalkingBrain
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 1
+    vectorObservationSize: 79
     numStackedVectorObservations: 1
-    vectorActionSize: 01000000
+    vectorActionSize: 05000000
     cameraResolutions: []
-    vectorActionDescriptions: []
-    vectorActionSpaceType: 0
+    vectorActionDescriptions:
+    - 
+    - 
+    - 
+    - 
+    - 
+    vectorActionSpaceType: 1
   model: {fileID: 0}
   inferenceDevice: 0

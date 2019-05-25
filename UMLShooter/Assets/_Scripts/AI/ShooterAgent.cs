@@ -94,14 +94,6 @@ public class ShooterAgent : Agent {
         // 2 -> rotation
         // 3 -> fire
 
-        // Move agent
-        var moveVector = new Vector3(vectorAction[0], 0, vectorAction[1]);
-        _movement.Move(moveVector);
-
-        // Rotate Agent
-        // var lookPostion = new Vector3(vectorAction[2], 0, vectorAction[3]);
-        // _movement.LookTowards(transform.position + lookPostion);
-
         // let's assume that 0 == 0 degrees and 1 == 360 degrees
         var rotation = vectorAction[2];
         var angle = (rotation * 360f + 90F) * Mathf.Deg2Rad;
@@ -117,23 +109,11 @@ public class ShooterAgent : Agent {
             _shooting.Fire();
         }
 
-        if (transform.position.y < _startPos.y - 1f) {
-            SetReward(-1f);
-            Done();
-        }
-
         AddReward(-1f / agentParameters.maxStep);
     }
 
     public void KilledEnemy(){
         AddReward(1f);
-    }
-
-    private void OnCollisionEnter(Collision other) {
-        if(other.gameObject.CompareTag("Enemy"))
-        {
-            SetReward(-0.01f);
-        }
     }
 
     void PlayerDeath() {

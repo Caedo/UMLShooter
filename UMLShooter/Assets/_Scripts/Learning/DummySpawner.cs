@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DummySpawner : MonoBehaviour {
     public ShootDummy _dummyPrefab;
-    public ShooterAgent _agent;
+    public ShooterAgent _shooterAgent;
+    public WalkingAgent _walkingAgent;
     public Vector2 _spawnArea;
     public int _dummySpawnCount;
     public int _maxDummiesCount;
@@ -16,7 +17,8 @@ public class DummySpawner : MonoBehaviour {
 
     private void Awake() {
         ShootDummy.OnDummyKill += DummyKilled;
-        _agent.OnAgentReset += ResetSpawner;
+        _shooterAgent.OnAgentReset += ResetSpawner;
+        _walkingAgent.OnAgentReset += ResetSpawner;
     }
 
     public void ResetSpawner() {
@@ -50,12 +52,13 @@ public class DummySpawner : MonoBehaviour {
         if (dummy._spawner != this)
             return;
 
-        _agent.KilledEnemy();
+        _shooterAgent.KilledEnemy();
         _spawnedDummies.Remove(dummy);
 
         if (_dummiesToSpawn == 0 && _spawnedDummies.Count <= 0) {
             Debug.Log("IT WORKED!!!");
-            _agent.Done();
+            _shooterAgent.Done();
+            _walkingAgent.Done();
         }
 
         SpawnOneDummy();

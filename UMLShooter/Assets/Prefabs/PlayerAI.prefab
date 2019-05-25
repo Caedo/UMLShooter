@@ -1412,8 +1412,8 @@ GameObject:
   - component: {fileID: 7963707340886889526}
   - component: {fileID: 6627660226668152296}
   - component: {fileID: 3921287613027405521}
-  - component: {fileID: 3279237495738935175}
   - component: {fileID: 6181314792203528716}
+  - component: {fileID: 4434993665446903501}
   m_Layer: 0
   m_Name: PlayerAI
   m_TagString: Player
@@ -1508,20 +1508,6 @@ MonoBehaviour:
   _weaponsPrefabs:
   - {fileID: 9143652712154947480, guid: 97b562796b0ce1d45894948db8ac64da, type: 3}
   _weaponGrip: {fileID: 8560976479107881814}
---- !u!114 &3279237495738935175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9141881217880144777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4917f755af73721469329b3baf11d6a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  drawDebugRay: 1
-  drawDebugHit: 1
 --- !u!114 &6181314792203528716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1532,6 +1518,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 642011045f41ded4fa26c2e4c7863174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 11400000, guid: 06e41bca1985fc94ca39011e6db0eaf4, type: 2}
+  agentParameters:
+    agentCameras: []
+    agentRenderTextures: []
+    maxStep: 5000
+    resetOnDone: 1
+    onDemandDecision: 0
+    numberOfActionsBetweenDecisions: 5
+  _rayAngleRange: 180
+  _rayAngleRangeOffset: 0
+  _raysNumber: 15
+  _rayDistance: 10
+  _originPoint: {fileID: 0}
+  _useMonitor: 1
+--- !u!114 &4434993665446903501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9141881217880144777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c456806ae8719d488e8fcaeca6b092c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   brain: {fileID: 11400000, guid: 06e41bca1985fc94ca39011e6db0eaf4, type: 2}

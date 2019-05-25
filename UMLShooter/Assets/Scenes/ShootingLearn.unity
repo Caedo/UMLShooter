@@ -151,8 +151,7 @@ MonoBehaviour:
     broadcastingBrains:
     - {fileID: 11400000, guid: 466ef22d19279bb479002d9633d45d35, type: 2}
     - {fileID: 11400000, guid: 06e41bca1985fc94ca39011e6db0eaf4, type: 2}
-    _brainsToControl:
-    - {fileID: 11400000, guid: 466ef22d19279bb479002d9633d45d35, type: 2}
+    _brainsToControl: []
   maxSteps: 0
   trainingConfiguration:
     width: 80
@@ -169,9 +168,9 @@ MonoBehaviour:
   resetParameters:
     resetParameters:
     - key: speed_min
-      value: 0
-    - key: speed_max
       value: 5
+    - key: speed_max
+      value: 10
 --- !u!4 &223304496
 Transform:
   m_ObjectHideFlags: 0

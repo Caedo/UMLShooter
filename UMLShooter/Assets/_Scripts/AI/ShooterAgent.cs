@@ -16,7 +16,6 @@ public class ShooterAgent : Agent {
     [Header("Positions")]
     public Transform _originPoint;
 
-
     [Header("Debug")]
     public bool _useMonitor;
 
@@ -75,7 +74,7 @@ public class ShooterAgent : Agent {
         var rot = transform.rotation.eulerAngles.y / 360f;
         var pos = transform.position - _originPoint.position;
         pos /= 14f;
-        
+
         var perception = _rayPerception.Perceive(_rayDistance, _rayAngles, _detectableObjects, 1f, 0);
         AddVectorObs(rot);
         AddVectorObs(pos);
@@ -125,14 +124,20 @@ public class ShooterAgent : Agent {
         AddReward(-1f / agentParameters.maxStep);
     }
 
-    public void KilledEnemy(){
+    public void KilledEnemy() {
         AddReward(1f);
     }
 
-    private void OnCollisionEnter(Collision other) {
-        if(other.gameObject.CompareTag("Enemy"))
-        {
-            SetReward(-0.01f);
+    // private void OnCollisionEnter(Collision other) {
+    //     // if(other.gameObject.CompareTag("Enemy"))
+    //     // {
+    //     //     AddReward(-0.1f);
+    //     // }
+    // }
+
+    private void OnTriggerStay(Collider other) {
+        if (other.gameObject.CompareTag("Enemy")) {
+            AddReward(-0.07f);
         }
     }
 

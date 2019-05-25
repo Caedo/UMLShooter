@@ -21,7 +21,9 @@ public class RaycastWeapon : Weapon {
         if (_shootTimer > _timeBetweenBullets && (_currentAmmo > 0 || _infinityAmmo)) {
 
             RaycastHit hit;
-            if (Physics.Raycast(_gunPoint.position, _gunPoint.forward, out hit)) {
+
+            //if (Physics.Raycast(_gunPoint.position, _gunPoint.forward, out hit)) {
+            if (Physics.SphereCast(_gunPoint.position, 0.15f, _gunPoint.forward, out hit)) {
                 var entity = hit.collider.GetComponentInParent<Entity>();
                 if (entity) {
                     entity.TakeDamage(_damage);
@@ -37,7 +39,7 @@ public class RaycastWeapon : Weapon {
         }
     }
 
-    IEnumerator LineRoutine(){
+    IEnumerator LineRoutine() {
         _line.enabled = true;
         yield return new WaitForSeconds(_timeBetweenBullets / 2);
         _line.enabled = false;

@@ -1546,7 +1546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c456806ae8719d488e8fcaeca6b092c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brain: {fileID: 11400000, guid: 06e41bca1985fc94ca39011e6db0eaf4, type: 2}
+  brain: {fileID: 11400000, guid: beb2d371a8dccfd4fa65238e8c466468, type: 2}
   agentParameters:
     agentCameras: []
     agentRenderTextures: []

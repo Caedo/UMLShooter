@@ -137,7 +137,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dummyPrefab: {fileID: 1371358953363362939, guid: bcca86b55c96be74db128bb6b7a8f02a,
     type: 3}
-  _agent: {fileID: 5661813572047913316}
+  _shooterAgent: {fileID: 5661813572047913316}
+  _walkingAgent: {fileID: 2798704878235391397}
   _spawnArea: {x: 13, y: 13}
   _dummySpawnCount: 2
   _maxDummiesCount: 10
@@ -672,6 +673,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4434993665446903501, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: _originPoint
+      value: 
+      objectReference: {fileID: 1971095043652311861}
+    - target: {fileID: 4434993665446903501, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: _rayAngleRange
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434993665446903501, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: _rayAngleRangeOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434993665446903501, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: _raysNumber
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434993665446903501, guid: 214d800e387559743b35d884fefbb63f,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 312e469790fefde42b811e227815850c,
+        type: 2}
     - target: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,
         type: 3}
       propertyPath: brain
@@ -700,6 +727,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 214d800e387559743b35d884fefbb63f, type: 3}
+--- !u!114 &2798704878235391397 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4434993665446903501, guid: 214d800e387559743b35d884fefbb63f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1971095042861722472}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c456806ae8719d488e8fcaeca6b092c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5661813572047913316 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6181314792203528716, guid: 214d800e387559743b35d884fefbb63f,

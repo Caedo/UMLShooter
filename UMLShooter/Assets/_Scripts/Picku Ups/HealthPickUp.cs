@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthPickUp : PickUp {
-    public float _healAmount;
+public class HealthPickUp : MonoBehaviour {
 
-    public override void Affect(GameObject Player) {
-        Player.GetComponent<PlayerEntity>().TakeDamage(-_healAmount);
+    public PickUpSpawner _spawner;
+
+    public void Remove() {
+        _spawner.Spawn();
+        _spawner.RemoveFromList(this);
     }
 }

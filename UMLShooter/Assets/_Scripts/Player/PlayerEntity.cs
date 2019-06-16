@@ -12,8 +12,8 @@ public class PlayerEntity : Entity {
     }
 
     protected override void Death() {
-        OnPlayerDeath?.Invoke();
-        Debug.Log("Death");
+        //OnPlayerDeath?.Invoke();
+        //Debug.Log("Death");
         //Destroy(gameObject);
         //gameObject.SetActive(false);
     }

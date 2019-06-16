@@ -6,6 +6,19 @@ using UnityEngine;
 
 public class ShooterAgent : Agent {
 
+    [Header("Health")]
+    public float _dummyDamage = 10;
+    public float _healAmount = 15;
+    public float _maxHealth = 100;
+    public float _invinsibilityTime = 1f;
+
+    [Header("Rendering")]
+    public Material _normalMaterial;
+    public Material _damagedMaterial;
+    public Renderer _bodyRenderer;
+    private float _currentHealth;
+    private bool _invinsible;
+
     [Header("Ray Perception")]
     [Range(0f, 360f)]
     public float _rayAngleRange;
@@ -25,21 +38,19 @@ public class ShooterAgent : Agent {
 
     Rigidbody _body;
     PlayerMovement _movement;
-    PlayerEntity _entity;
     PlayerShooting _shooting;
 
     RayPerception _rayPerception;
 
     bool dead;
 
-    string[] _detectableObjects = new string[] { "Enemy" };
+    string[] _detectableObjects = new string[] { "Enemy", "HealthPickup" };
     float[] _rayAngles;
 
     void Awake() {
         _startPos = transform.position;
         _movement = GetComponent<PlayerMovement>();
         _body = GetComponent<Rigidbody>();
-        _entity = GetComponent<PlayerEntity>();
         _shooting = GetComponent<PlayerShooting>();
         _rayPerception = GetComponent<RayPerception>();
 
@@ -62,14 +73,18 @@ public class ShooterAgent : Agent {
     public override void AgentReset() {
         transform.position = _startPos;
         _movement.ResetVelocity();
-        _entity.ResetHealth();
+
+        _currentHealth = _maxHealth;
+
+        StopCoroutine("InvinsibleRoutine");
+        _bodyRenderer.material = _normalMaterial;
+        _invinsible = false;
 
         OnAgentReset?.Invoke();
     }
 
     public override void CollectObservations() {
-        float[] rayAngles = { 20f, 90f, 160f, 45f, 135f, 70f, 110f };
-
+        
         //AddVectorObs(transform.position);
         var rot = transform.rotation.eulerAngles.y / 360f;
         var pos = transform.position - _originPoint.position;
@@ -79,11 +94,14 @@ public class ShooterAgent : Agent {
         AddVectorObs(rot);
         AddVectorObs(pos);
         AddVectorObs(perception);
+        AddVectorObs(_currentHealth / _maxHealth);
 
         if (_useMonitor) {
-            Monitor.Log("Rotation: ", rot.ToString());
+            //Monitor.Log("Rotation: ", rot.ToString());
             //Monitor.Log("Position: ", pos.ToString());
-            Monitor.Log("Perception: ", perception.ToArray());
+            //Monitor.Log("Perception: ", perception.ToArray());
+
+            Monitor.Log("Health: ", _currentHealth.ToString());
         }
     }
 
@@ -121,11 +139,22 @@ public class ShooterAgent : Agent {
             Done();
         }
 
-        AddReward(-1f / agentParameters.maxStep);
+        // Existencial reward
+        AddReward(1f / agentParameters.maxStep);
     }
 
     public void KilledEnemy() {
         AddReward(1f);
+    }
+
+    IEnumerator InvinsibleRoutine() {
+        _invinsible = true;
+        _bodyRenderer.material = _damagedMaterial;
+
+        yield return new WaitForSeconds(_invinsibilityTime);
+
+        _bodyRenderer.material = _normalMaterial;
+        _invinsible = false;
     }
 
     // private void OnCollisionEnter(Collision other) {
@@ -136,14 +165,31 @@ public class ShooterAgent : Agent {
     // }
 
     private void OnTriggerStay(Collider other) {
-        if (other.gameObject.CompareTag("Enemy")) {
-            AddReward(-0.07f);
-        }
-    }
+        if (other.gameObject.CompareTag("Enemy") && !_invinsible) {
+            AddReward(-0.15f);
 
-    void PlayerDeath() {
-        // Debug.Log("Done by death");
-        // SetReward(-100f);
-        Done();
+            _currentHealth -= _dummyDamage;
+
+            StartCoroutine("InvinsibleRoutine");
+
+            if (_currentHealth <= 0) {
+                // Player Killed :<
+                AddReward(-1f);
+                Done();
+            }
+        }
+
+        if (other.CompareTag("HealthPickup")) {
+            var healthDelta = _maxHealth - _currentHealth;
+
+            var heal = Mathf.Min(healthDelta, _healAmount);
+            _currentHealth += heal;
+
+            AddReward(heal / _maxHealth);
+
+            var pickUp = other.GetComponent<HealthPickUp>();
+            pickUp.Remove();
+            Destroy(other.gameObject);
+        }
     }
 }

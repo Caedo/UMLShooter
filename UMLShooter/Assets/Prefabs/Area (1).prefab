@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 979617380828bb145b74b4358d5ecd16, type: 2}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1971095043221024503}
   - component: {fileID: 1971095043221024496}
-  - component: {fileID: 1971095043221024497}
+  - component: {fileID: 4718048670313718727}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -140,9 +140,9 @@ MonoBehaviour:
   _agent: {fileID: 5661813572047913316}
   _spawnArea: {x: 13, y: 13}
   _dummySpawnCount: 2
-  _maxDummiesCount: 10
+  _maxDummiesCount: 15
   _spawnedDummies: []
---- !u!114 &1971095043221024497
+--- !u!114 &4718048670313718727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,27 +151,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1971095043221024502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
+  m_Script: {fileID: 11500000, guid: ee2a386d80e96114cb22d070a9dfc0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Events:
-  - {fileID: 11400000, guid: aca00d6b18b56024389e437af741af51, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1971095043221024496}
-        m_MethodName: ResetSpawner
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  _agent: {fileID: 5661813572047913316}
+  _healthPickUpPrefab: {fileID: 3861525094554766107, guid: f34ed9c0482d3d545a789d463524a07e,
+    type: 3}
+  _pickupCount: 2
+  _pickupSpawnArea: {x: 12, y: 12}
 --- !u!1 &1971095043393205778
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +217,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 979617380828bb145b74b4358d5ecd16, type: 2}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -321,7 +308,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 979617380828bb145b74b4358d5ecd16, type: 2}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -572,7 +559,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 979617380828bb145b74b4358d5ecd16, type: 2}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

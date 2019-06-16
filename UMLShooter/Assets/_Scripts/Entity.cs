@@ -7,6 +7,8 @@ public class Entity : MonoBehaviour {
     public float _MaxHealth;
     protected float _health;
 
+    public float CurrentHealth => _health;
+
     protected virtual void Start() {
         ResetHealth();
     }

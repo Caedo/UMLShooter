@@ -19,6 +19,10 @@ public class DummySpawner : MonoBehaviour {
         _agent.OnAgentReset += ResetSpawner;
     }
 
+    void Start() {
+        _dummySpawnCount = (int) ShootingLearnAcademy.Instance.resetParameters["enemies_count"];
+    }
+
     public void ResetSpawner() {
         _dummiesToSpawn = _maxDummiesCount;
 

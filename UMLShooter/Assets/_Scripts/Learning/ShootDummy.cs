@@ -48,7 +48,7 @@ public class ShootDummy : Entity {
     }
 
     protected override void Death() {
-        Debug.Log("Dummy zdech");
+        //Debug.Log("Dummy zdech");
         OnDummyKill?.Invoke(this);
         Destroy(gameObject);
     }
